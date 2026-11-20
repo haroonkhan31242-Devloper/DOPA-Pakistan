@@ -1,0 +1,6 @@
+{
+  "name": "DOPA Pakistan — Doctor of Pharmacy (Pharm.D)",
+  "description": "Doctor of Pharmacy Association Pakistan — community, verified pharmacy shop, raw materials marketplace, job board, DOPA membership, and matrimonial portal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

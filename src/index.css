@@ -1,0 +1,469 @@
+@import "tailwindcss";
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* DOPA Pakistan Fonts */
+@font-face {
+  font-family: 'Syne';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('/assets/fonts/syne-latin-600-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Syne';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/assets/fonts/syne-latin-700-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Syne';
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: url('/assets/fonts/syne-latin-800-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/assets/fonts/dm-sans-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('/assets/fonts/dm-sans-latin-500-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('/assets/fonts/dm-sans-latin-600-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/assets/fonts/dm-sans-latin-700-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/assets/fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('/assets/fonts/jetbrains-mono-latin-500-normal.woff2') format('woff2');
+}
+
+/* DOPA Pakistan Design Tokens */
+:root {
+  --bg: #F3F8FA;
+  --surface: #FFFFFF;
+  --surface2: #E7F0F4;
+  --fg: #081A2B;
+  --muted: #46606F;
+  --line: #D2E0E7;
+  --navy: #081A2B;
+  --blue: #102F4B;
+  --teal: #087F8C;
+  --emerald: #12A889;
+  --aqua: #83E5D2;
+  --accent: #087F8C;
+  --glow: #83E5D2;
+  --btn-bg: #087F8C;
+  --btn-fg: #FFFFFF;
+  --btn-hover: #066872;
+  --nav-bg: rgba(243, 248, 250, 0.92);
+  --ok: #0B7A60;
+  --okbg: #DDF5EE;
+  --warn: #8A5D00;
+  --warnbg: #FBF0D3;
+  --bad: #B3322B;
+  --badbg: #FBE3E0;
+  --info: #0A5E78;
+  --infobg: #DCEFF5;
+  --shadow: 0 1px 2px rgba(8, 26, 43, 0.06), 0 14px 34px -14px rgba(8, 26, 43, 0.22);
+  --f-display: 'Syne', 'Segoe UI', system-ui, sans-serif;
+  --f-body: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
+  --f-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+}
+
+:root[data-theme="dark"] {
+  --bg: #081A2B;
+  --surface: #0D2236;
+  --surface2: #102F4B;
+  --fg: #E8F3F6;
+  --muted: #9DB5C4;
+  --line: #1D3B56;
+  --accent: #83E5D2;
+  --btn-bg: #83E5D2;
+  --btn-fg: #06222B;
+  --btn-hover: #A3F0E0;
+  --nav-bg: rgba(8, 26, 43, 0.9);
+  --ok: #6FE3C2;
+  --okbg: #0B3A33;
+  --warn: #F2C766;
+  --warnbg: #3B2E0A;
+  --bad: #FF9C92;
+  --badbg: #431A18;
+  --info: #8ED8F0;
+  --infobg: #0B3446;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 14px 34px -14px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+.dz {
+  --bg: #081A2B;
+  --surface: #0D2236;
+  --surface2: #102F4B;
+  --fg: #E8F3F6;
+  --muted: #A9BFCC;
+  --line: #1D3B56;
+  --accent: #83E5D2;
+  --btn-bg: #83E5D2;
+  --btn-fg: #06222B;
+  --btn-hover: #A3F0E0;
+  color: var(--fg);
+  background: var(--bg);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--f-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--f-display);
+    line-height: 1.12;
+    margin: 0;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4.4vw, 3.2rem);
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: clamp(1.55rem, 3vw, 2.3rem);
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  a {
+    color: var(--accent);
+    text-underline-offset: 3px;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+.font-display {
+  font-family: var(--f-display);
+}
+.font-mono-dopa {
+  font-family: var(--f-mono);
+}
+.num {
+  font-variant-numeric: tabular-nums;
+}
+.eyebrow {
+  font-family: var(--f-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.skip {
+  position: absolute;
+  left: -9999px;
+}
+.skip:focus {
+  position: fixed;
+  left: 12px;
+  top: 12px;
+  z-index: 200;
+  background: var(--navy);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.site-wm {
+  position: fixed;
+  left: 50%;
+  top: 55%;
+  width: min(62vmin, 520px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: url('/assets/img/dopa-logo-512.png') center / contain no-repeat;
+  opacity: 0.045;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 16px;
+}
+
+/* Header & Navigation */
+.dopa-hdr {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+  transition: box-shadow 0.25s;
+}
+.dopa-hdr.scrolled {
+  box-shadow: 0 10px 30px -18px rgba(8, 26, 43, 0.35);
+}
+
+/* Buttons */
+.dopa-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font: 600 0.94rem var(--f-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.18s, background 0.18s, box-shadow 0.18s, border-color 0.18s;
+  min-height: 42px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.dopa-btn.sm {
+  padding: 7px 14px;
+  min-height: 36px;
+  font-size: 0.86rem;
+}
+.dopa-btn.primary {
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+}
+.dopa-btn.primary:hover:not(:disabled) {
+  background: var(--btn-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px -10px var(--accent);
+}
+.dopa-btn.ghost {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--fg);
+}
+.dopa-btn.ghost:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.dopa-btn.danger {
+  background: var(--badbg);
+  color: var(--bad);
+  border-color: transparent;
+}
+.dopa-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Cards */
+.dopa-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+.dopa-card.flat {
+  box-shadow: none;
+}
+.dopa-card.hov {
+  transition: transform 0.22s, border-color 0.22s, box-shadow 0.22s;
+}
+.dopa-card.hov:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+.tile-join {
+  border: 1.5px solid var(--accent);
+  background: linear-gradient(160deg, rgba(18, 168, 137, 0.1), transparent 60%), var(--surface);
+}
+
+/* Inputs */
+.dopa-input,
+.dopa-select,
+.dopa-textarea {
+  font: inherit;
+  color: var(--fg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 14px;
+  width: 100%;
+  min-height: 44px;
+}
+.dopa-textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+.dopa-input:focus,
+.dopa-select:focus,
+.dopa-textarea:focus {
+  outline: 3px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  border-color: var(--accent);
+}
+
+/* Notices */
+.dopa-notice {
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 0.94rem;
+  background: var(--infobg);
+  color: var(--info);
+}
+.dopa-notice.warn {
+  background: var(--warnbg);
+  color: var(--warn);
+}
+.dopa-notice.bad {
+  background: var(--badbg);
+  color: var(--bad);
+}
+.dopa-notice.ok {
+  background: var(--okbg);
+  color: var(--ok);
+}
+
+/* Member Card */
+.mcard {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  min-height: 290px;
+  border-radius: 22px;
+  padding: 22px;
+  color: #E8F3F6;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(145deg, #081A2B 0%, #102F4B 55%, #0A6670 120%);
+  box-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.7), inset 0 0 0 1px rgba(131, 229, 210, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+.mcard::after {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  right: -70px;
+  bottom: -110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(18, 168, 137, 0.5), transparent 65%);
+  z-index: -1;
+}
+.mcard.inactive {
+  filter: grayscale(0.8) brightness(0.85);
+}
+
+/* CTA & Footer */
+.dopa-cta {
+  background: linear-gradient(120deg, var(--navy), var(--blue) 60%, #0B5560);
+  border-radius: 28px;
+  padding: clamp(28px, 5vw, 52px);
+  position: relative;
+  overflow: hidden;
+  color: #E8F3F6;
+}
+.dopa-cta::after {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(131, 229, 210, 0.32), transparent 65%);
+}
+
+/* Feature Strip */
+.feat-grid {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 10px;
+}
+@media (max-width: 1100px) {
+  .feat-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .feat-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+  }
+  .feat-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .feat-item {
+    flex: 0 0 92px;
+    scroll-snap-align: start;
+  }
+}
+
+@media print {
+  .no-print,
+  header,
+  footer {
+    display: none !important;
+  }
+  body {
+    background: #fff !important;
+  }
+}
